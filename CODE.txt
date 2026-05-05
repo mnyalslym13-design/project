@@ -1,0 +1,200 @@
+!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة إبان الرقمية | حملة إبان</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gov-green: #2d4626; 
+            --gold: #c5a059;
+            --bg-light: #f4f7f2;
+            --white: #ffffff;
+            --sidebar-width: 280px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-light); color: #333; overflow-x: hidden; }
+
+        header {
+            background: var(--white);
+            padding: 10px 2%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--gold);
+            height: 80px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-section { display: flex; align-items: center; gap: 15px; }
+        .single-logo { height: 55px; width: auto; border-radius: 8px; }
+        .logo-text h2 { color: var(--gov-green); font-weight: 800; font-size: 1.3rem; }
+
+        .sidebar {
+            position: fixed;
+            right: 0;
+            top: 80px;
+            width: var(--sidebar-width);
+            height: calc(100vh - 80px);
+            background: var(--gov-green);
+            color: white;
+            padding: 20px 0;
+            overflow-y: auto;
+            z-index: 999;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: var(--gold);
+            color: var(--gov-green);
+        }
+
+        .nav-item i { margin-left: 15px; font-size: 1.2rem; width: 25px; text-align: center; }
+        .nav-item span { font-weight: 500; font-size: 0.95rem; }
+
+        .main-content {
+            margin-right: var(--sidebar-width);
+            padding: 120px 40px 40px;
+            min-height: 100vh;
+        }
+
+        .content-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .content-card h1 { color: var(--gov-green); margin-bottom: 25px; border-bottom: 2px solid var(--gold); padding-bottom: 10px; }
+        .content-card h3 { color: var(--gold); margin: 25px 0 15px; }
+        .content-card p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; color: #444; }
+        .content-card ul { margin-right: 25px; }
+        .content-card li { margin-bottom: 12px; font-size: 1.05rem; }
+
+        .video-container {
+            margin: 0 auto 30px;
+            max-width: 600px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: #000;
+        }
+        video { width: 100%; display: block; border-radius: 15px; }
+
+        .social-footer {
+            margin-top: 40px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        .social-icons { display: flex; justify-content: center; gap: 20px; margin-top: 10px; }
+        .social-icons a { color: var(--gov-green); font-size: 1.8rem; transition: 0.3s; }
+        .social-icons a:hover { color: var(--gold); }
+
+        @media (max-width: 768px) {
+            .sidebar { width: 70px; }
+            .sidebar span { display: none; }
+            .main-content { margin-right: 70px; padding: 100px 15px; }
+            .nav-item { justify-content: center; padding: 20px 0; }
+            .nav-item i { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-section">
+            <img src="jjj.jpg" alt="Logo" class="single-logo">
+            <div class="logo-text"><h2>حملة إبــــان</h2></div>
+        </div>
+        <div style="font-weight: 500; color: var(--gov-green); font-size: 0.9rem;">جامعة IAU | قسم الإعلام</div>
+    </header>
+
+    <div class="sidebar">
+        <div class="nav-item active" onclick="showContent('intro', this)"><i class="fas fa-info-circle"></i><span>مقدمة الحملة</span></div>
+        <div class="nav-item" onclick="showContent('health', this)"><i class="fas fa-heartbeat"></i><span>١. محور الصحة</span></div>
+        <div class="nav-item" onclick="showContent('education', this)"><i class="fas fa-university"></i><span>٢. محور التعليم</span></div>
+        <div class="nav-item" onclick="showContent('media', this)"><i class="fas fa-broadcast-tower"></i><span>٣. محور الإعلام</span></div>
+        <div class="nav-item" onclick="showContent('tourism', this)"><i class="fas fa-plane-departure"></i><span>٤. محور السياحة</span></div>
+        <div class="nav-item" onclick="showContent('sports', this)"><i class="fas fa-running"></i><span>٥. محور الرياضة</span></div>
+        <div class="nav-item" onclick="showContent('hajj', this)"><i class="fas fa-mosque"></i><span>٦. محور الحج</span></div>
+        <div class="nav-item" onclick="showContent('vision', this)"><i class="fas fa-eye"></i><span>الرؤية والرسالة</span></div>
+    </div>
+
+    <div class="main-content">
+        <div id="displayArea" class="content-card">
+            <h1>مقدمة الحملة</h1>
+            <p>تتوجه المملكة إلى تعزيز جودة الحياة ضمن أهم أهداف رؤية ٢٠٣٠ عبر تطوير الخدمات الحكومية المتكاملة التي تلبي احتياجات المواطنين والمقيمين.</p>
+            <h3>◈ فكرة الحملة:</h3>
+            <p>حملة توعوية شاملة تهدف إلى تعريف أفراد المجتمع بالخدمات التي تقدمها الجهات الحكومية، بالتركيز على تحسين جودة الحياة اليومية وتسهيل الوصول لها.</p>
+            <h3>◈ الفئة المستهدفة:</h3>
+            <ul>
+                <li>المواطنون والمقيمون.</li>
+                <li>كبار السن وذوو الاحتياجات الخاصة.</li>
+                <li>صناع المحتوى والمؤثرون.</li>
+            </ul>
+        </div>
+
+        <div class="social-footer">
+            <p style="font-weight: bold;">تواصلوا معنا عبر منصاتنا الرقمية</p>
+            <div class="social-icons">
+                <a href="https://tiktok.com/@eban3_"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.linkedin.com/in/eban-iau-16675821a?utm_source=share_via&utm_content=profile&utm_medium=member_ios"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createVideo(fileName) {
+            return `
+            <div class="video-container">
+                <video controls>
+                    <source src="${fileName}.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+            </div>`;
+        }
+
+        const details = {
+            intro: `<h1>مقدمة وفكرة الحملة</h1><p>تتوجه المملكة إلى تعزيز جودة الحياة ضمن أهداف رؤية ٢٠٣٠ عبر تطوير الخدمات الحكومية المتكاملة.</p><h3>◈ فكرة الحملة:</h3><p>تعريف المجتمع بالخدمات الحكومية وشرح أثرها في تحسين الحياة اليومية وتسهيل الوصول لها.</p>`,
+            health: createVideo('health') + `<h1>محور الصحة وجودة الحياة</h1><h3>◈ يشمل الخدمات التالية:</h3><ul><li>الرعاية الصحية المنزلية.</li><li>الاستشارات الطبية الفورية.</li><li>استعراض الأدوية والوصفات.</li></ul><h3>◈ هدف المحور:</h3><p>رفع الوعي بالخدمات الصحية الحديثة وتسهيل حصول المستفيدين على الرعاية الطبية.</p>`,
+            education: createVideo('education') + `<h1>محور التعليم وبناء القدرات</h1><h3>◈ يشمل:</h3><ul><li>منصة ادرس في السعودية.</li><li>تطبيق روضتي.</li><li>منصة سفير.</li></ul><h3>◈ هدف المحور:</h3><p>الوعي بالخدمات التعليمية الرقمية لدعم التعليم وتطوير المهارات العلمية.</p>`,
+            media: createVideo('media') + `<h1>محور الإعلام والتواصل المجتمعي</h1><h3>◈ يشمل:</h3><ul><li>مبادرة نمو - SMF GROW UP.</li><li>منصة نبض الإعلام.</li><li>خدمة تراخيص إنتاج المحتوى.</li></ul><h3>◈ هدف المحور:</h3><p>تعزيز المعرفة بالمبادرات الإعلامية والخدمات التنظيمية، وتمكين صناع المحتوى.</p>`,
+            
+            // تم تحديث اسم ملف فيديو السياحة هنا
+            tourism: createVideo('IMG_5683 (1)') + `<h1>محور السياحة والترفيه</h1><h3>◈ يشمل:</h3><ul><li>سارة المرشدة الذكية.</li><li>استراتيجية السياحة الرقمية.</li><li>برنامج رواد السياحة.</li><li>برنامج عون السياحة.</li></ul><h3>◈ هدف المحور:</h3><p>التعريف بالخدمات السياحية الرقمية لتعزيز تجربة السائح وإظهار جودة الحياة الترفيهية في المملكة.</p>`,
+            
+            sports: createVideo('sports') + `<h1>محور الرياضة</h1><h3>◈ يشمل:</h3><ul><li>برامج دعم الأندية الرياضية غير الربحية.</li><li>المبادرات المجتمعية الرياضية.</li></ul><h3>◈ هدف المحور:</h3><p>نشر المشاركة المجتمعية في البرامج الرياضية المختلفة.</p>`,
+            hajj: createVideo('hajj') + `<h1>محور الحج والعمرة</h1><h3>◈ يشمل:</h3><ul><li>خدمات الاستعلام.</li><li>تقديم المعاملات وتسجيل الخطابات.</li><li>تصاريح الحج.</li></ul><h3>◈ هدف المحور:</h3><p>وصول المستفيدين إلى الخدمات الدينية الرقمية وخدمة تجربة الحاج والمعتمر.</p>`,
+            vision: `<h1>الرؤية والرسالة والأهداف</h1><h3>◈ الرؤية:</h3><p>مجتمع واعٍ بالخدمات الحكومية، قادر على الوصول إليها والاستفادة منها بكفاءة.</p><h3>◈ الرسالة:</h3><p>إبراز الخدمات الحكومية غير المتداولة للأفراد للاستفادة منها.</p>`
+        };
+
+        function showContent(key, element) {
+            document.getElementById("displayArea").innerHTML = details[key];
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+</body>
+</html>
